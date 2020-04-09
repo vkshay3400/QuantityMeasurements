@@ -27,4 +27,40 @@ public class TestMeasurementOfQuantity {
         measurements = measurementOfQuantity.getConversions(TypesConversion.INCH_TO_FEET, 0);
         Assert.assertEquals(0, measurements, 0.0);
     }
+
+    @Test
+    public void givenLength_WhenFeetEqualsYard_ShouldReturnEquals() {
+        boolean measurements = measurementOfQuantity.getYardFeetConversions(TypesConversion.FEET_YARD, 3, 1);
+        Assert.assertEquals(true, measurements);
+    }
+
+    @Test
+    public void givenLength_WhenFeetNotEqualsYard_ShouldReturnNotEquals() {
+        boolean measurements = measurementOfQuantity.getYardFeetConversions(TypesConversion.FEET_YARD, 1, 1);
+        Assert.assertNotEquals(true, measurements);
+    }
+
+    @Test
+    public void givenLength_WhenInchNotEqualsYard_ShouldReturnNotEquals() {
+        boolean measurements = measurementOfQuantity.getYardFeetConversions(TypesConversion.INCH_YARD, 1, 1);
+        Assert.assertNotEquals(true, measurements);
+    }
+
+    @Test
+    public void givenLength_WhenYardEqualsInch_ShouldReturnEquals() {
+        boolean measurements = measurementOfQuantity.getYardFeetConversions(TypesConversion.YARD_INCH, 1, 36);
+        Assert.assertEquals(true, measurements);
+    }
+
+    @Test
+    public void givenLength_WhenInchEqualsYard_ShouldReturnEquals() {
+        boolean measurements = measurementOfQuantity.getYardFeetConversions(TypesConversion.INCH_YARD, 36, 1);
+        Assert.assertEquals(true, measurements);
+    }
+
+    @Test
+    public void givenLength_WhenYardEqualsFeet_ShouldReturnEquals() {
+        boolean measurements = measurementOfQuantity.getYardFeetConversions(TypesConversion.YARD_FEET, 1, 3);
+        Assert.assertEquals(true, measurements);
+    }
 }
