@@ -1,6 +1,7 @@
 package com.bridglelabz.quantitymeasurement;
 
 import com.bridglelabz.quantitymeasurement.conversions.TypesConversion;
+import com.bridglelabz.quantitymeasurement.service.MeasurementOfQuantity;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,6 +19,12 @@ public class TestMeasurementOfQuantity {
     @Test
     public void givenZeroFeet_WhenEqualsZero_ShouldReturnEquals() {
         measurements = measurementOfQuantity.getConversions(TypesConversion.FEET_TO_INCH, 0);
+        Assert.assertEquals(0, measurements, 0.0);
+    }
+
+    @Test
+    public void givenZeroInch_WhenEqualsZero_ShouldReturnEquals() {
+        measurements = measurementOfQuantity.getConversions(TypesConversion.INCH_TO_FEET, 0);
         Assert.assertEquals(0, measurements, 0.0);
     }
 }

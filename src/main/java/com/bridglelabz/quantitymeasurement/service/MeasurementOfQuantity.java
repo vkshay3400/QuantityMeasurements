@@ -1,4 +1,4 @@
-package com.bridglelabz.quantitymeasurement;
+package com.bridglelabz.quantitymeasurement.service;
 
 import com.bridglelabz.quantitymeasurement.conversions.TypesConversion;
 
@@ -15,6 +15,5 @@ public class MeasurementOfQuantity {
     private void setPreValues(TypesConversion type) {
         FIRST_VALUE = type.firstValue;
         SECOND_VALUE = type.secondValue;
-
     }
 }
