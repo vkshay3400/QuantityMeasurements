@@ -76,38 +76,38 @@ public class TestMeasurementOfQuantity {
     //******* FEET -> YARD *******
     @Test
     public void givenLength_WhenFeetEqualsYard_ShouldReturnEquals() {
-        boolean measurements = measurementOfQuantity.getConversion(TypesConversion.FEET_YARD, 3, 1);
+        boolean measurements = measurementOfQuantity.getConversion(TypesConversion.FEET_TO_YARD, 3, 1);
         Assert.assertEquals(true, measurements);
     }
 
     @Test
     public void givenLength_WhenInchNotEqualsYard_ShouldReturnNotEquals() {
-        boolean measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_YARD, 1, 1);
+        boolean measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_TO_YARD, 1, 1);
         Assert.assertNotEquals(true, measurements);
     }
 
     @Test
     public void givenLength_WhenYardEqualsInch_ShouldReturnEquals() {
-        boolean measurements = measurementOfQuantity.getConversion(TypesConversion.YARD_INCH, 1, 36);
+        boolean measurements = measurementOfQuantity.getConversion(TypesConversion.YARD_TO_INCH, 1, 36);
         Assert.assertEquals(true, measurements);
     }
 
     @Test
     public void givenLength_WhenInchEqualsYard_ShouldReturnEquals() {
-        boolean measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_YARD, 36, 1);
+        boolean measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_TO_YARD, 36, 1);
         Assert.assertEquals(true, measurements);
     }
 
     @Test
     public void givenLength_WhenYardEqualsFeet_ShouldReturnEquals() {
-        boolean measurements = measurementOfQuantity.getConversion(TypesConversion.YARD_FEET, 1, 3);
+        boolean measurements = measurementOfQuantity.getConversion(TypesConversion.YARD_TO_FEET, 1, 3);
         Assert.assertEquals(true, measurements);
     }
 
     //******* INCH -> CENTIMETER *******
     @Test
     public void givenInInch_WhenEqualsCentimeter_ShouldReturnEquals() {
-        boolean measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_CENTIMETER, 2, 5);
+        boolean measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_TO_CENTIMETER, 2, 5);
         Assert.assertEquals(true, measurements);
     }
 
@@ -138,7 +138,7 @@ public class TestMeasurementOfQuantity {
     @Test
     public void givenInchesAndCentimeter_WhenAdded_ShouldReturnInInchesValue() {
         firstValue = measurementOfQuantity.addConversion(TypesConversion.INCH_TO_FEET, 1, 0);
-        secondValue = measurementOfQuantity.addConversion(TypesConversion.CENTIMETER_INCH, 1, 0);
+        secondValue = measurementOfQuantity.addConversion(TypesConversion.CENTIMETER_TO_INCH, 1, 0);
         additionValue = firstValue + secondValue;
         Assert.assertEquals(3, additionValue, 0.0);
     }
@@ -225,5 +225,24 @@ public class TestMeasurementOfQuantity {
         secondValue = measurementOfQuantity.addConversion(TypesConversion.GRAMS_TO_KILOGRAMS, 1, 0);
         additionValue = firstValue + secondValue;
         Assert.assertEquals(1001, additionValue, 0.0);
+    }
+
+    //******* FAHRENHEIT -> CELSIUS *******
+    @Test
+    public void givenFahrenheitCelsius_WhenZero_ShouldReturnEquals() {
+        measurements = measurementOfQuantity.getConversion(TypesConversion.FAHRENHEIT_TO_CELSIUS, 0, 0);
+        Assert.assertEquals(true, measurements);
+    }
+
+    @Test
+    public void givenFahrenheitCelsius_WhenZero_ShouldReturnNotEquals() {
+        measurements = measurementOfQuantity.getConversion(TypesConversion.FAHRENHEIT_TO_CELSIUS, 0, 0);
+        Assert.assertNotEquals(false, measurements);
+    }
+
+    @Test
+    public void givenFahrenheitCelsius_WhenEquality_ShouldReturnEquals() {
+        measurements = measurementOfQuantity.getConversion(TypesConversion.FAHRENHEIT_TO_CELSIUS, 212, 100);
+        Assert.assertEquals(true, measurements);
     }
 }
