@@ -13,11 +13,11 @@ public class MeasurementOfQuantity {
         double operation1 = value1 * FIRST_VALUE;
         double operation2 = value2 * SECOND_VALUE;
 
-        if (operation1 == operation2) {
+        if (operation1 == operation2)
             return true;
-        } else {
+        if (operation1 != operation2)
             return false;
-        }
+        return true;
     }
 
     //METHOD TO ADD CONVERSIONS
