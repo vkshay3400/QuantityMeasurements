@@ -138,4 +138,39 @@ public class TestMeasurementOfQuantity {
         additionValue = firstValue + secondValue;
         Assert.assertEquals(3, additionValue, 0.0);
     }
+
+    @Test
+    public void givenGallonAndLitre_WhenEqualsZero_ShouldReturnEquals(){
+        measurements = measurementOfQuantity.getConversion(TypesConversion.GALLON_TO_LITRE, 0,0);
+        Assert.assertEquals(true,measurements);
+    }
+
+    @Test
+    public void givenGallonAndLitre_WhenNotEqualsZero_ShouldReturnEquals(){
+        measurements = measurementOfQuantity.getConversion(TypesConversion.GALLON_TO_LITRE, 0,0);
+        Assert.assertNotEquals(false,measurements);
+    }
+
+    @Test
+    public void givenGallonAndLitre_WhenEquality_ShouldReturnValue(){
+        measurements = measurementOfQuantity.getConversion(TypesConversion.GALLON_TO_LITRE, 1,3.78);
+        Assert.assertEquals(true,measurements);
+    }
+
+    @Test
+    public void givenLitreAndMilliLitre_WhenEquals_ShouldReturnValue(){
+        measurements = measurementOfQuantity.getConversion(TypesConversion.LITRE_TO_MILLILITRE, 0,0);
+        Assert.assertEquals(true,measurements);
+    }
+
+    @Test
+    public void givenLitreAndMilliLitre_WhenNotEquals_ShouldReturnValue(){
+        measurements = measurementOfQuantity.getConversion(TypesConversion.LITRE_TO_MILLILITRE, 0,0);
+        Assert.assertNotEquals(false,measurements);
+    }
+    @Test
+    public void givenLitreAndMilliLitre_WhenEquality_ShouldReturnValue(){
+        measurements = measurementOfQuantity.getConversion(TypesConversion.LITRE_TO_MILLILITRE, 1,1000);
+        Assert.assertEquals(true,measurements);
+    }
 }
