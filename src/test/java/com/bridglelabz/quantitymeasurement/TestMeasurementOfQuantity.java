@@ -10,6 +10,7 @@ public class TestMeasurementOfQuantity {
 
     MeasurementOfQuantity measurementOfQuantity;
     boolean measurements;
+    double firstValue, secondValue, additionValue;
 
     @Before
     public void setMeasurementOfQuantity() throws Exception {
@@ -104,5 +105,37 @@ public class TestMeasurementOfQuantity {
     public void givenInInch_WhenEqualsCentimeter_ShouldReturnEquals() {
         boolean measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_CENTIMETER, 2, 5);
         Assert.assertEquals(true, measurements);
+    }
+
+    @Test
+    public void givenInchesAndInches_WhenAdded_ShouldReturnInInchesValue() {
+        firstValue = measurementOfQuantity.addConversion(TypesConversion.INCH_TO_FEET, 2, 0);
+        secondValue = measurementOfQuantity.addConversion(TypesConversion.INCH_TO_FEET, 2, 0);
+        additionValue = firstValue + secondValue;
+        Assert.assertEquals(4, additionValue, 0.0);
+    }
+
+    @Test
+    public void givenFeetAndInches_WhenAdded_ShouldReturnInInchesValue() {
+        firstValue = measurementOfQuantity.addConversion(TypesConversion.FEET_TO_INCH, 1, 0);
+        secondValue = measurementOfQuantity.addConversion(TypesConversion.INCH_TO_FEET, 2, 0);
+        additionValue = firstValue + secondValue;
+        Assert.assertEquals(14, additionValue, 0.0);
+    }
+
+    @Test
+    public void givenFeetAndFeet_WhenAdded_ShouldReturnInInchesValue() {
+        firstValue = measurementOfQuantity.addConversion(TypesConversion.FEET_TO_INCH, 1, 0);
+        secondValue = measurementOfQuantity.addConversion(TypesConversion.FEET_TO_INCH, 1, 0);
+        additionValue = firstValue + secondValue;
+        Assert.assertEquals(24, additionValue, 0.0);
+    }
+
+    @Test
+    public void givenInchesAndCentimeter_WhenAdded_ShouldReturnInInchesValue() {
+        firstValue = measurementOfQuantity.addConversion(TypesConversion.INCH_TO_FEET, 1, 0);
+        secondValue = measurementOfQuantity.addConversion(TypesConversion.CENTIMETER_INCH, 1, 0);
+        additionValue = firstValue + secondValue;
+        Assert.assertEquals(3, additionValue, 0.0);
     }
 }
