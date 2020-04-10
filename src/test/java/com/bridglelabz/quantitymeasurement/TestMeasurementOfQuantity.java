@@ -23,8 +23,50 @@ public class TestMeasurementOfQuantity {
     }
 
     @Test
+    public void givenZeroFeet_WhenNotEqualsZero_ShouldReturnEquals() {
+        measurements = measurementOfQuantity.getConversion(TypesConversion.FEET_TO_INCH, 0, 0);
+        Assert.assertNotEquals(false, measurements);
+    }
+
+    @Test
+    public void givenZeroFeet_WhenEqualsZero_ShouldThrowException() throws NullPointerException {
+        try {
+            measurements = measurementOfQuantity.getConversion(TypesConversion.FEET_TO_INCH, 0, 10);
+        } catch (NullPointerException e) {
+            Assert.assertEquals(null, e.getMessage());
+        }
+    }
+
+    @Test
+    public void givenZeroFeet_WhenEquality_ShouldReturnEquals() {
+        measurements = measurementOfQuantity.getConversion(TypesConversion.FEET_TO_INCH, 1, 12);
+        Assert.assertEquals(true, measurements);
+    }
+
+    @Test
     public void givenZeroInch_WhenEqualsZero_ShouldReturnEquals() {
-        measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_TO_FEET, 0,0);
+        measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_TO_FEET, 0, 0);
+        Assert.assertEquals(true, measurements);
+    }
+
+    @Test
+    public void givenZeroInch_WhenNotEqualsZero_ShouldReturnEquals() {
+        measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_TO_FEET, 0, 0);
+        Assert.assertNotEquals(false, measurements);
+    }
+
+    @Test
+    public void givenZeroInch_WhenEqualsZero_ShouldThrowException() throws NullPointerException {
+        try {
+            measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_TO_FEET, 0, 10);
+        } catch (NullPointerException e) {
+            Assert.assertEquals(null, e.getMessage());
+        }
+    }
+
+    @Test
+    public void givenZeroInch_WhenEquality_ShouldReturnEquals() {
+        measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_TO_FEET, 1, 12);
         Assert.assertEquals(true, measurements);
     }
 
@@ -32,12 +74,6 @@ public class TestMeasurementOfQuantity {
     public void givenLength_WhenFeetEqualsYard_ShouldReturnEquals() {
         boolean measurements = measurementOfQuantity.getConversion(TypesConversion.FEET_YARD, 3, 1);
         Assert.assertEquals(true, measurements);
-    }
-
-    @Test
-    public void givenLength_WhenFeetNotEqualsYard_ShouldReturnNotEquals() {
-        boolean measurements = measurementOfQuantity.getConversion(TypesConversion.FEET_YARD, 1, 1);
-        Assert.assertNotEquals(true, measurements);
     }
 
     @Test
