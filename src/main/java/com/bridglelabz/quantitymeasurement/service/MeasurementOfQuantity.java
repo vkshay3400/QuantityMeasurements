@@ -20,6 +20,14 @@ public class MeasurementOfQuantity {
         }
     }
 
+    //METHOD TO ADD CONVERSIONS
+    public double addConversion(TypesConversion type, double value1, double value2) {
+        setPreValues(type);
+        double operation3 = value1 * type.firstValue;
+        double finalValue = operation3;
+        return finalValue;
+    }
+
     //TO SET VALUES
     private void setPreValues(TypesConversion type) {
         FIRST_VALUE = type.firstValue;
