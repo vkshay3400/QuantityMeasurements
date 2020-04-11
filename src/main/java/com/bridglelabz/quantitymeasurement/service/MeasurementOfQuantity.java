@@ -2,6 +2,8 @@ package com.bridglelabz.quantitymeasurement.service;
 
 import com.bridglelabz.quantitymeasurement.conversions.TypesConversion;
 
+import java.util.Objects;
+
 public class MeasurementOfQuantity {
     //STATIC VARIABLES
     private static double FIRST_VALUE;
@@ -13,11 +15,16 @@ public class MeasurementOfQuantity {
         double operation1 = value1 * FIRST_VALUE;
         double operation2 = value2 * SECOND_VALUE;
 
-        if (operation1 == operation2)
+        if (Objects.equals(operation1, operation2))
             return true;
-        if (operation1 != operation2)
-            return false;
-        return true;
+        return false;
+    }
+
+    //METHOD TO GET CONVERSION VALUE
+    public double getConversionValue(TypesConversion type, Double value1, double value2) {
+        setPreValues(type);
+        double operatedAfterValue = value2 * SECOND_VALUE;
+        return operatedAfterValue;
     }
 
     //METHOD TO ADD CONVERSIONS
