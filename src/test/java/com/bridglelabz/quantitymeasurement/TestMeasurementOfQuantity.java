@@ -31,17 +31,17 @@ public class TestMeasurementOfQuantity {
     }
 
     @Test
-    public void givenZeroFeet_WhenEqualsZero_ShouldThrowException() throws NullPointerException {
+    public void givenFeet_WhenNull_ShouldThrowException() throws NullPointerException {
         try {
-            measurements = measurementOfQuantity.getConversion(TypesConversion.FEET_TO_INCH, 0, 10);
+            Double measurements = measurementOfQuantity.getConversionValue(TypesConversion.FEET_TO_INCH, null, 0);
         } catch (NullPointerException e) {
             Assert.assertEquals(null, e.getMessage());
         }
     }
 
     @Test
-    public void givenZeroFeet_WhenEquality_ShouldReturnEquals() {
-        measurements = measurementOfQuantity.getConversion(TypesConversion.FEET_TO_INCH, 1, 12);
+    public void givenFeetToInch_WhenEquality_ShouldReturnEquals() {
+        measurements = measurementOfQuantity.getConversion(TypesConversion.FEET_TO_INCH, 4, 48);
         Assert.assertEquals(true, measurements);
     }
 
@@ -59,18 +59,12 @@ public class TestMeasurementOfQuantity {
     }
 
     @Test
-    public void givenZeroInch_WhenEqualsZero_ShouldThrowException() throws NullPointerException {
+    public void givenInch_WhenNull_ShouldThrowException() throws NullPointerException {
         try {
-            measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_TO_FEET, 0, 10);
+            Double measurements = measurementOfQuantity.getConversionValue(TypesConversion.INCH_TO_FEET, null, 0);
         } catch (NullPointerException e) {
             Assert.assertEquals(null, e.getMessage());
         }
-    }
-
-    @Test
-    public void givenZeroInch_WhenEquality_ShouldReturnEquals() {
-        measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_TO_FEET, 1, 12);
-        Assert.assertEquals(true, measurements);
     }
 
     //******* FEET -> YARD *******
@@ -105,6 +99,27 @@ public class TestMeasurementOfQuantity {
     }
 
     //******* INCH -> CENTIMETER *******
+    @Test
+    public void givenInInchCentimeter_WhenEqualsZero_ShouldReturnEquals() {
+        boolean measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_TO_CENTIMETER, 0, 0);
+        Assert.assertEquals(true, measurements);
+    }
+
+    @Test
+    public void givenInInchCentimeter_WhenEqualsNotZero_ShouldReturnNotEquals() {
+        boolean measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_TO_CENTIMETER, 2, 5);
+        Assert.assertNotEquals(false, measurements);
+    }
+
+    @Test
+    public void givenCentimeter_WhenNull_ShouldThrowException() throws NullPointerException {
+        try {
+            Double measurements = measurementOfQuantity.getConversionValue(TypesConversion.INCH_TO_CENTIMETER, null, 0);
+        } catch (NullPointerException e) {
+            Assert.assertEquals(null, e.getMessage());
+        }
+    }
+
     @Test
     public void givenInInch_WhenEqualsCentimeter_ShouldReturnEquals() {
         boolean measurements = measurementOfQuantity.getConversion(TypesConversion.INCH_TO_CENTIMETER, 2, 5);
@@ -157,6 +172,15 @@ public class TestMeasurementOfQuantity {
     }
 
     @Test
+    public void givenGallonAndLitre_WhenNull_ShouldThrowException() throws NullPointerException {
+        try {
+            Double measurements = measurementOfQuantity.getConversionValue(TypesConversion.GALLON_TO_LITRE, null, 0);
+        } catch (NullPointerException e) {
+            Assert.assertEquals(null, e.getMessage());
+        }
+    }
+
+    @Test
     public void givenGallonAndLitre_WhenEquality_ShouldReturnValue() {
         measurements = measurementOfQuantity.getConversion(TypesConversion.GALLON_TO_LITRE, 1, 3.78);
         Assert.assertEquals(true, measurements);
@@ -175,9 +199,18 @@ public class TestMeasurementOfQuantity {
     }
 
     @Test
+    public void givenLitreAndMilliLitre_WhenNull_ShouldThrowException() throws NullPointerException {
+        try {
+            Double measurements = measurementOfQuantity.getConversionValue(TypesConversion.LITRE_TO_MILLILITRE, null, 0);
+        } catch (NullPointerException e) {
+            Assert.assertEquals(null, e.getMessage());
+        }
+    }
+
+    @Test
     public void givenLitreAndMilliLitre_WhenEquality_ShouldReturnValue() {
-        measurements = measurementOfQuantity.getConversion(TypesConversion.LITRE_TO_MILLILITRE, 1, 1000);
-        Assert.assertEquals(true, measurements);
+        double measurements = measurementOfQuantity.getConversionValue(TypesConversion.LITRE_TO_MILLILITRE, 1.0, 1000);
+        Assert.assertEquals(1, measurements, 0.0);
     }
 
     //******* KILOGRAM -> GRAMS *******
@@ -191,6 +224,15 @@ public class TestMeasurementOfQuantity {
     public void givenKilogramsAndGrams_WhenNotEqualsZero_ShouldReturnEquals() {
         measurements = measurementOfQuantity.getConversion(TypesConversion.KILOGRAMS_TO_GRAMS, 0, 0);
         Assert.assertNotEquals(false, measurements);
+    }
+
+    @Test
+    public void givenKilogramsAndGrams_WhenNull_ShouldThrowException() throws NullPointerException {
+        try {
+            Double measurements = measurementOfQuantity.getConversionValue(TypesConversion.KILOGRAMS_TO_GRAMS, null, 0);
+        } catch (NullPointerException e) {
+            Assert.assertEquals(null, e.getMessage());
+        }
     }
 
     @Test
@@ -210,6 +252,15 @@ public class TestMeasurementOfQuantity {
     public void givenTonneAndKilograms_WhenNotEquals_ShouldReturnEquals() {
         measurements = measurementOfQuantity.getConversion(TypesConversion.TONNE_TO_KILOGRAMS, 0, 0);
         Assert.assertNotEquals(false, measurements);
+    }
+
+    @Test
+    public void givenTonneAndKilograms_WhenNull_ShouldThrowException() throws NullPointerException {
+        try {
+            Double measurements = measurementOfQuantity.getConversionValue(TypesConversion.TONNE_TO_KILOGRAMS, null, 0);
+        } catch (NullPointerException e) {
+            Assert.assertEquals(null, e.getMessage());
+        }
     }
 
     @Test
@@ -241,8 +292,17 @@ public class TestMeasurementOfQuantity {
     }
 
     @Test
-    public void givenFahrenheitCelsius_WhenEquality_ShouldReturnEquals() {
-        measurements = measurementOfQuantity.getConversion(TypesConversion.FAHRENHEIT_TO_CELSIUS, 212, 100);
-        Assert.assertEquals(true, measurements);
+    public void givenFahrenheitCelsius_WhenNull_ShouldThrowException() throws NullPointerException {
+        try {
+            Double measurements = measurementOfQuantity.getConversionValue(TypesConversion.FAHRENHEIT_TO_CELSIUS, null, 0);
+        } catch (NullPointerException e) {
+            Assert.assertEquals(null, e.getMessage());
+        }
+    }
+
+    @Test
+    public void givenFahrenheitCelsius_WhenEquality_ShouldReturnValue() {
+        double measurements = measurementOfQuantity.getConversionValue(TypesConversion.FAHRENHEIT_TO_CELSIUS, 212.0, 100);
+        Assert.assertEquals(212, measurements, 0.0);
     }
 }
