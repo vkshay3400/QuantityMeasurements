@@ -13,26 +13,25 @@ public class MeasurementOfQuantity {
 
     public boolean getConversion(TypesConversion type, double beforeConversionValue, double afterConversionValue) {
         setPreValues(type);
-        double operation1 = beforeConversionValue * FIRST_VALUE;
-        double operation2 = afterConversionValue * SECOND_VALUE;
+        double operationOnFirstValue = beforeConversionValue * FIRST_VALUE;
+        double operationOnSecondValue = afterConversionValue * SECOND_VALUE;
 
-        if (Objects.equals(operation1, operation2))
+        if (Objects.equals(operationOnFirstValue, operationOnSecondValue))
             return true;
         return false;
     }
 
     //METHOD TO GET CONVERSION VALUE
-    public double getConversionValue(TypesConversion type, Double value1, double value2) {
+    public double getConversionValue(TypesConversion type, Double beforeConversionValue, double afterConversionValue) {
         setPreValues(type);
-        double operatedAfterValue = value2 * SECOND_VALUE;
+        double operatedAfterValue = afterConversionValue * SECOND_VALUE;
         return operatedAfterValue;
     }
 
     //METHOD TO ADD CONVERSIONS
-    public double addConversion(TypesConversion type, double value1, double value2) {
+    public double addConversion(TypesConversion type, double beforeConversionValue, double afterConversionValue) {
         setPreValues(type);
-        double operation3 = value1 * type.firstValue;
-        double finalValue = operation3;
+        double finalValue = beforeConversionValue * type.firstValue;
         return finalValue;
     }
 
