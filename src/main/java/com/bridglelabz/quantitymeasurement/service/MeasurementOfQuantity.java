@@ -1,17 +1,21 @@
 package com.bridglelabz.quantitymeasurement.service;
 
-import com.bridglelabz.quantitymeasurement.conversions.TypesConversion;
+import com.bridglelabz.quantitymeasurement.conversions.TypeConversion;
+import com.bridglelabz.quantitymeasurement.conversions.Conversions;
 
 import java.util.Objects;
 
-public class MeasurementOfQuantity {
+public class MeasurementOfQuantity extends Conversions {
     //STATIC VARIABLES
     private static double FIRST_VALUE;
     private static double SECOND_VALUE;
 
-    //METHOD TO GET CONVERSIONS
+    public MeasurementOfQuantity() {
+        super();
+    }
 
-    public boolean getConversion(TypesConversion type, double beforeConversionValue, double afterConversionValue) {
+    //METHOD TO GET CONVERSIONS
+    public boolean getConversion(TypeConversion type, double beforeConversionValue, double afterConversionValue) {
         setPreValues(type);
         double operationOnFirstValue = beforeConversionValue * FIRST_VALUE;
         double operationOnSecondValue = afterConversionValue * SECOND_VALUE;
@@ -21,22 +25,40 @@ public class MeasurementOfQuantity {
         return false;
     }
 
+    //METHOD TO GET TEMPERATURE CONVERSION
+    public double temperatureConversion(TypeConversion type, Double beforeConversionValue, double afterConversionValue) {
+        switch (type) {
+            case FAHRENHEIT_TO_CELSIUS:
+                return ((beforeConversionValue - 32) * type.firstValue);
+            case CELSIUS_TO_FAHRENHEIT:
+                return ((beforeConversionValue * type.firstValue) + 32);
+            default:
+                return 0.0;
+        }
+    }
+
+    //EQUAL METHOD
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
     //METHOD TO GET CONVERSION VALUE
-    public double getConversionValue(TypesConversion type, Double beforeConversionValue, double afterConversionValue) {
+    public double getConversionValue(TypeConversion type, Double beforeConversionValue, double afterConversionValue) {
         setPreValues(type);
         double operatedAfterValue = afterConversionValue * SECOND_VALUE;
         return operatedAfterValue;
     }
 
     //METHOD TO ADD CONVERSIONS
-    public double addConversion(TypesConversion type, double beforeConversionValue, double afterConversionValue) {
+    public double addConversion(TypeConversion type, double beforeConversionValue, double afterConversionValue) {
         setPreValues(type);
         double finalValue = beforeConversionValue * type.firstValue;
         return finalValue;
     }
 
     //TO SET VALUES
-    private void setPreValues(TypesConversion type) {
+    private void setPreValues(TypeConversion type) {
         FIRST_VALUE = type.firstValue;
         SECOND_VALUE = type.secondValue;
     }
