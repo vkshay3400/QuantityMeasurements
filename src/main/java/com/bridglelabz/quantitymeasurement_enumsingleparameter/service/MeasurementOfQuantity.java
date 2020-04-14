@@ -1,7 +1,7 @@
-package com.bridglelabz.quantitymeasurement.service;
+package com.bridglelabz.quantitymeasurement_enumsingleparameter.service;
 
-import com.bridglelabz.quantitymeasurement.conversions.UnitTypeConversion;
-import com.bridglelabz.quantitymeasurement.conversions.Conversions;
+import com.bridglelabz.quantitymeasurement_enumsingleparameter.conversions.UnitTypeConversion;
+import com.bridglelabz.quantitymeasurement_enumsingleparameter.conversions.Conversions;
 
 public class MeasurementOfQuantity extends Conversions {
     //STATIC VARIABLES
@@ -20,14 +20,14 @@ public class MeasurementOfQuantity extends Conversions {
     }
 
     //METHOD TO GET TEMPERATURE CONVERSION
-    public double temperatureConversion(UnitTypeConversion type, Double beforeConversionValue) {
+    public Double temperatureConversion(UnitTypeConversion type, Double beforeConversionValue) {
         switch (type) {
             case FAHRENHEIT:
                 return ((beforeConversionValue - 32) * type.value);
             case CELSIUS:
                 return ((beforeConversionValue * type.value) + 32);
             default:
-                return 0.0;
+                return null;
         }
     }
 
@@ -39,6 +39,10 @@ public class MeasurementOfQuantity extends Conversions {
     //EQUAL METHOD
     @Override
     public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        if (!super.equals(obj))
+            return false;
         return super.equals(obj);
     }
 }
