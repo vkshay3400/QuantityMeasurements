@@ -1,4 +1,4 @@
-package com.bridglelabz.quantitymeasurement.conversions;
+package com.bridglelabz.quantitymeasurement_enumdoubleparameter.conversions;
 
 public abstract class Conversions {
 
