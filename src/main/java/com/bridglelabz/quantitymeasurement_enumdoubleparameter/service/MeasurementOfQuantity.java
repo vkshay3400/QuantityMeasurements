@@ -16,10 +16,10 @@ public class MeasurementOfQuantity extends Conversions {
     }
 
     //METHOD TO GET CONVERSIONS
-    public boolean getConversion(TypeConversion type, double beforeConversionValue, double afterConversionValue) {
+    public boolean getConversion(TypeConversion type, double measurementFirstValue, double measurementSecondValue) {
         setPreValues(type);
-        double operationOnFirstValue = beforeConversionValue * FIRST_VALUE;
-        double operationOnSecondValue = afterConversionValue * SECOND_VALUE;
+        double operationOnFirstValue = measurementFirstValue * FIRST_VALUE;
+        double operationOnSecondValue = measurementSecondValue * SECOND_VALUE;
 
         if (Objects.equals(operationOnFirstValue, operationOnSecondValue))
             return true;
@@ -27,34 +27,28 @@ public class MeasurementOfQuantity extends Conversions {
     }
 
     //METHOD TO GET TEMPERATURE CONVERSION
-    public Double temperatureConversion(TypeConversion type, Double beforeConversionValue, double afterConversionValue) {
+    public Double temperatureConversion(TypeConversion type, Double measurementFirstValue, double measurementSecondValue) {
         switch (type) {
             case FAHRENHEIT_TO_CELSIUS:
-                return ((beforeConversionValue - 32) * type.firstValue);
+                return ((measurementFirstValue - 32) * type.firstValue);
             case CELSIUS_TO_FAHRENHEIT:
-                return ((beforeConversionValue * type.firstValue) + 32);
+                return ((measurementFirstValue * type.firstValue) + 32);
             default:
                 return null;
         }
     }
 
-    //EQUAL METHOD
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
     //METHOD TO GET CONVERSION VALUE
-    public double getConversionValue(TypeConversion type, Double beforeConversionValue, double afterConversionValue) {
+    public double getConversionValue(TypeConversion type, Double measurementFirstValue, double measurementSecondValue) {
         setPreValues(type);
-        double operatedAfterValue = afterConversionValue * SECOND_VALUE;
+        double operatedAfterValue = measurementSecondValue * SECOND_VALUE;
         return operatedAfterValue;
     }
 
     //METHOD TO ADD CONVERSIONS
-    public double addConversion(TypeConversion type, double beforeConversionValue, double afterConversionValue) {
+    public double addConversion(TypeConversion type, double measurementFirstValue, double measurementSecondValue) {
         setPreValues(type);
-        double finalValue = beforeConversionValue * type.firstValue;
+        double finalValue = measurementFirstValue * type.firstValue;
         return finalValue;
     }
 
@@ -62,5 +56,15 @@ public class MeasurementOfQuantity extends Conversions {
     private void setPreValues(TypeConversion type) {
         FIRST_VALUE = type.firstValue;
         SECOND_VALUE = type.secondValue;
+    }
+
+    //EQUAL METHOD
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        if (!super.equals(obj))
+            return false;
+        return super.equals(obj);
     }
 }
