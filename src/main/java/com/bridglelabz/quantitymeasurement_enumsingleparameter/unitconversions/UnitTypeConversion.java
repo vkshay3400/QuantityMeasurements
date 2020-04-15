@@ -1,4 +1,4 @@
-package com.bridglelabz.quantitymeasurement_enumsingleparameter.conversions;
+package com.bridglelabz.quantitymeasurement_enumsingleparameter.unitconversions;
 
 public enum UnitTypeConversion {
 
